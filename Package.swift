@@ -6,7 +6,8 @@ import PackageDescription
 let package = Package(
     name: "AtlassianHelper",
     platforms: [
-        .iOS(.v10)
+        .iOS(.v10),
+        .macOS(.v10_12)
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
@@ -22,7 +23,10 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "AtlassianHelper",
-            dependencies: []),
+            dependencies: [
+                .product(name: "Moya",
+                         package: "moya")
+            ]),
         .testTarget(
             name: "AtlassianHelperTests",
             dependencies: ["AtlassianHelper"]),
