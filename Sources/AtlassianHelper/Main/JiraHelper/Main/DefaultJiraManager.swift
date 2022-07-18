@@ -5,7 +5,7 @@ class DefaultJiraManager: JiraManager {
     var user: String
     var password: String
     
-    init(user: String, password: String) {
+    public init(user: String, password: String) {
         self.user = user
         self.password = password
     }
