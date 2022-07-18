@@ -1,17 +1,14 @@
 import Foundation
 import Moya
 
-typealias Credentials = (user: String, password: String)
-var helper: JiraHelper?
-
 enum JiraService {
-    case fetchTasks(credentials: Credentials)
-    case postTask(summary: String, description: String, credentials: Credentials)
+    case fetchTasks
+    case postTask(summary: String, description: String)
 }
 
 extension JiraService: TargetType {
     var baseURL: URL {
-        guard let url = helper?.jiraURL else {
+        guard let url = URL(string: "https://khushnidjon.atlassian.net/") else {
             fatalError("Not valid URL")
         }
        
