@@ -1,8 +1,10 @@
 import Moya
+import Foundation
 
 public struct JiraHelper {
-    public private(set) var text = "Hello, World!"
-
-    public init() {
+    var jiraURL: URL
+    
+    public init(jiraPathURL: URL) {
+        jiraURL = jiraPathURL
     }
 }
