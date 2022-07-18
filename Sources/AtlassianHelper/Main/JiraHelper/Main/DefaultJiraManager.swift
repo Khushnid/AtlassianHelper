@@ -1,7 +1,7 @@
 import Foundation
 import Moya
 
-class DefaultJiraManager: JiraManager {
+public class DefaultJiraManager: JiraManager {
     var user: String
     var password: String
     
