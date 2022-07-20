@@ -32,12 +32,13 @@ extension JiraService {
     }
 """
         
-        if let jsonData = body.data(using: .utf8) {
-            let data = try? JSONSerialization.data(withJSONObject: jsonData)
-            return data
+        if (!JSONSerialization.isValidJSONObject(body)) {
+            print("Not Valid JSON")
+            return nil
         }
         
-        return nil
+        let data = try? JSONSerialization.data(withJSONObject: body, options: [])
+        return data
     }
     
 }
