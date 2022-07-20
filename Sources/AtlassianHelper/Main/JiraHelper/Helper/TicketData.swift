@@ -31,6 +31,13 @@ extension JiraService {
         }
     }
 """
-         return try? JSONSerialization.data(withJSONObject: body, options: [])
+        
+        if let jsonData = body.data(using: .utf8) {
+            let data = try? JSONSerialization.data(withJSONObject: jsonData)
+            return data
+        }
+        
+        return nil
     }
+    
 }
