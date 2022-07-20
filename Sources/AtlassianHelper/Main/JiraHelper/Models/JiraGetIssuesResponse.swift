@@ -1,16 +1,15 @@
 import Foundation
 
 public struct JiraGetIssuesResponse: Codable {
-    let maxResults, total: Int?
-    let issues: [JiraIssue]?
+    public let maxResults, total: Int?
+    public let issues: [JiraIssue]?
 }
 
-// MARK: - Issue
-struct JiraIssue: Codable {
-    let id: String?
-    let issueSelf: String?
-    let key: String?
-    let fields: JiraFields?
+public struct JiraIssue: Codable {
+    public let id: String?
+    public let issueSelf: String?
+    public let key: String?
+    public let fields: JiraFields?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -19,17 +18,16 @@ struct JiraIssue: Codable {
     }
 }
 
-// MARK: - Fields
-struct JiraFields: Codable {
-    let created: String?
-    let priority: Priority?
-    let assignee: Assignee?
-    let updated: String?
-    let fieldsDescription: Description?
-    let summary: String?
-    let creator: Assignee?
-    let reporter: Assignee?
-    let progress: JiraProgress?
+public struct JiraFields: Codable {
+    public let created: String?
+    public let priority: Priority?
+    public let assignee: Assignee?
+    public let updated: String?
+    public let fieldsDescription: Description?
+    public let summary: String?
+    public let creator: Assignee?
+    public let reporter: Assignee?
+    public let progress: JiraProgress?
     
     enum CodingKeys: String, CodingKey {
         case created, priority
@@ -40,10 +38,10 @@ struct JiraFields: Codable {
     }
 }
 
-struct Assignee: Codable {
-    let assigneeSelf: String?
-    let emailAddress: String?
-    let active: Bool?
+public struct Assignee: Codable {
+    public let assigneeSelf: String?
+    public let emailAddress: String?
+    public let active: Bool?
 
     enum CodingKeys: String, CodingKey {
         case assigneeSelf = "self"
@@ -51,14 +49,14 @@ struct Assignee: Codable {
     }
 }
 
-struct JiraProgress: Codable {
-    let progress, total: Int?
+public struct JiraProgress: Codable {
+    public let progress, total: Int?
 }
 
-struct JiraAssignee: Codable {
-    let assigneeSelf: String?
-    let emailAddress: String?
-    let active: Bool?
+public struct JiraAssignee: Codable {
+    public let assigneeSelf: String?
+    public let emailAddress: String?
+    public let active: Bool?
 
     enum CodingKeys: String, CodingKey {
         case assigneeSelf = "self"
@@ -66,28 +64,27 @@ struct JiraAssignee: Codable {
     }
 }
 
-// MARK: - Description
-struct Description: Codable {
-    let type: String?
-    let version: Int?
-    let content: [DescriptionContent]?
+public struct Description: Codable {
+    public let type: String?
+    public let version: Int?
+    public let content: [DescriptionContent]?
 }
 
 // MARK: - DescriptionContent
-struct DescriptionContent: Codable {
-    let type: String?
-    let content: [ContentContent]?
+public struct DescriptionContent: Codable {
+    public let type: String?
+    public let content: [ContentContent]?
 }
 
 // MARK: - ContentContent
-struct ContentContent: Codable {
-    let type, text: String?
+public struct ContentContent: Codable {
+    public let type, text: String?
 }
 
-struct Priority: Codable {
-    let prioritySelf: String?
-    let iconURL: String?
-    let name, id: String?
+public struct Priority: Codable {
+    public let prioritySelf: String?
+    public let iconURL: String?
+    public let name, id: String?
 
     enum CodingKeys: String, CodingKey {
         case prioritySelf = "self"
