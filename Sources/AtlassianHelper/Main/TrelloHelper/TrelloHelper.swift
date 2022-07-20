@@ -8,7 +8,7 @@ public struct TrelloHelper {
     }
 }
 
-public func jsonToData(jsonDic:Dictionary<String, Any>) -> Data? {
+public func jsonToData(jsonDic: String) -> Data? {
     if (!JSONSerialization.isValidJSONObject(jsonDic)) {
         print("is not a valid json object")
         return nil

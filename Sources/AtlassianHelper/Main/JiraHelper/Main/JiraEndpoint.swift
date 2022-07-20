@@ -44,17 +44,11 @@ extension JiraService: TargetType {
         case .fetchTasks(_):
             return .requestPlain
         case .postTask(_, let summary, let description):
+            if let data = addTicketData("PPOKERMAIN", summary, description) {
+                return .requestData(data)
+            }
             
-            let params = ["fields[project][key]" : "PPOKERMAIN",
-                          "fields[summary]" : summary,
-                          "fields[description][type]" : "doc",
-                          "fields[description][version]" : "1",
-                          "fields[description][content][type]" : "paragraph",
-                          "fields[description][content][content][type]" : "text",
-                          "fields[description][content][content][text]" : description,
-                          "fields[issuetype][name]" : "Task"]
-            
-            return .requestData(jsonToData(jsonDic: params)!)
+            return .requestPlain
         }
     }
     
