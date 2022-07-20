@@ -54,8 +54,7 @@ extension JiraService: TargetType {
                           "fields[description][content][content][text]" : description,
                           "fields[issuetype][name]" : "Task"]
             
-            
-            return .requestParameters(parameters: params, encoding: URLEncoding.default)
+            return .requestData(jsonToData(jsonDic: params)!)
         }
     }
     
