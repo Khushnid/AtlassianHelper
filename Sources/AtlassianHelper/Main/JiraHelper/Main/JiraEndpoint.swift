@@ -40,15 +40,11 @@ extension JiraService: TargetType {
     }
     
     var task: Task {
-        return .requestPlain
-    }
-    
-    var sampleData: Data {
         switch self {
-        case .fetchTasks(_):
-            return Data()
-        case .postTask(_, let summary, let description):
-            return addTicketData("PPOKERMAIN", summary, description)
+        case .fetchTasks(let credentials):
+            return .requestPlain
+        case .postTask(let credentials, let summary, let description):
+            return .requestParameters(parameters: ["Hello":"Hi"], encoding: URLEncoding.default)
         }
     }
     
