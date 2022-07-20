@@ -70,13 +70,11 @@ public struct Description: Codable {
     public let content: [DescriptionContent]?
 }
 
-// MARK: - DescriptionContent
 public struct DescriptionContent: Codable {
     public let type: String?
     public let content: [ContentContent]?
 }
 
-// MARK: - ContentContent
 public struct ContentContent: Codable {
     public let type, text: String?
 }

@@ -5,7 +5,7 @@ typealias Credentials = (url: String, token: String)
 
 enum JiraService {
     case fetchTasks(credentials: Credentials)
-    case postTask(credentials: Credentials, summary: String, description: String)
+    case postTask(projectKey: String, credentials: Credentials, summary: String, description: String)
 }
 
 extension JiraService: TargetType {
@@ -15,7 +15,7 @@ extension JiraService: TargetType {
             guard let token = URL(string: credentials.url) else { fatalError("Not valid URL") }
             return token
             
-        case .postTask(let credentials, _, _):
+        case .postTask(_, let credentials, _, _):
             guard let token = URL(string: credentials.url) else { fatalError("Not valid URL") }
             return token
         }
@@ -43,8 +43,8 @@ extension JiraService: TargetType {
         switch self {
         case .fetchTasks(_):
             return .requestPlain
-        case .postTask(_, let summary, let description):
-            if let data = addTicketData("PPOKERMAIN", summary, description) {
+        case .postTask(let key, _, let summary, let description):
+            if let data = addTicketData(key, summary, description) {
                 return .requestData(data)
             }
             
@@ -61,7 +61,7 @@ extension JiraService: TargetType {
                 "Authorization": credentials.token
             ]
             
-        case .postTask(let credentials, _, _):
+        case .postTask(_, let credentials, _, _):
             return [
                 "Content-Type" : "application/json",
                 "Accept" : "*/*",
