@@ -31,9 +31,6 @@ extension JiraService {
         }
     }
 """
-        
-        let data = try? JSONSerialization.data(withJSONObject: body, options: [])
-        let str = String(data:data!, encoding: String.Encoding.utf8)
-        return data
+         return try? JSONSerialization.data(withJSONObject: body, options: [])
     }
 }
