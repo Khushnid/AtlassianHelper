@@ -41,10 +41,21 @@ extension JiraService: TargetType {
     
     var task: Task {
         switch self {
-        case .fetchTasks(let credentials):
+        case .fetchTasks(_):
             return .requestPlain
-        case .postTask(let credentials, let summary, let description):
-            return .requestParameters(parameters: ["Hello":"Hi"], encoding: URLEncoding.default)
+        case .postTask(_, let summary, let description):
+            
+            let params = ["fields[project][key]" : "PPOKERMAIN",
+                          "fields[summary]" : summary,
+                          "fields[description][type]" : "doc",
+                          "fields[description][version]" : "1",
+                          "fields[description][content][type]" : "paragraph",
+                          "fields[description][content][content][type]" : "text",
+                          "fields[description][content][content][text]" : description,
+                          "fields[issuetype][name]" : "Task"]
+            
+            
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
     }
     
