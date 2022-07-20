@@ -10,8 +10,6 @@ public class DefaultJiraManager {
         self.user = user
         self.password = password
         self.url = url
-        
-        AtlassianHelper.JiraHelper.shared.jiraUrl = url
     }
 
     var provider = MoyaProvider<JiraService>(plugins: [NetworkLoggerPlugin()])
@@ -19,18 +17,17 @@ public class DefaultJiraManager {
     lazy var authToken: String = { [weak self] in
         guard let self = self else { return "" }
         let token = "Basic " + "\(self.user):\(self.password)".data(using: .nonLossyASCII)!.base64EncodedString(options: [])
-        JiraHelper.shared.jiraToken = authToken
         return token
     }()
 }
 
 extension DefaultJiraManager: JiraManager {
     public func fetchTasks(completion: @escaping (Result<JiraGetIssuesResponse, Error>) -> ()) {
-        request(target: .fetchTasks, completion: completion)
+        request(target: .fetchTasks(credentials: (url: url, token: authToken)), completion: completion)
     }
     
     public func postTask(summary: String, description: String, completion: @escaping (Result<JiraCreateIssueResponse, Error>) -> ()) {
-        request(target: .postTask(summary: summary, description: description), completion: completion)
+        request(target: .postTask(credentials: (url: url, token: authToken), summary: summary, description: description), completion: completion)
     }
 }
 

@@ -1,22 +1,24 @@
 import Foundation
 import Moya
 
+typealias Credentials = (url: String, token: String)
+
 enum JiraService {
-    case fetchTasks
-    case postTask(summary: String, description: String)
+    case fetchTasks(credentials: Credentials)
+    case postTask(credentials: Credentials, summary: String, description: String)
 }
 
 extension JiraService: TargetType {
     var baseURL: URL {
-        guard let url = URL(string: JiraHelper.shared.jiraUrl) else {
-            fatalError("Not valid URL")
-        }
+        switch self {
+        case .fetchTasks(let credentials):
+            guard let token = URL(string: credentials.url) else { fatalError() }
+            return token
        
-        return url
-    }
-    
-    var authorizationType: AuthorizationType {
-        return .basic
+        case .postTask(let credentials, _, _):
+            guard let token = URL(string: credentials.url) else { fatalError() }
+            return token
+        }
     }
     
     var path: String {
@@ -40,14 +42,21 @@ extension JiraService: TargetType {
     var task: Task {
         return .requestPlain
     }
-    
+  
     var headers: [String : String]? {
         switch self {
-        case .fetchTasks, .postTask:
+        case .fetchTasks(let credentials):
             return [
                 "Content-Type" : "application/json",
                 "Accept" : "*/*",
-                "Authorization": JiraHelper.shared.jiraToken
+                "Authorization": credentials.token
+            ]
+       
+        case .postTask(let credentials, _, _):
+            return [
+                "Content-Type" : "application/json",
+                "Accept" : "*/*",
+                "Authorization": credentials.token
             ]
         }
     }
