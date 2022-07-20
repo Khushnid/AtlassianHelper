@@ -5,7 +5,7 @@ This swift package manager makes easy to work with JIRA API(soon Trello)
 
 * Authorizing using basic auth type
 * Getting the list of tasks from Jira Board
-* Adding new Jira Task
+* Adding new Jira Task(Add Project Key)
 
 ## Requirements
 
@@ -47,4 +47,4 @@ You can contact me at <xushnudbek321@gmail.com> If you find an issue, [open a ti
 ## More
 See also:
 * [Integration JIRA](https://github.com/Khushnid/IntergrationJira) - Example project for how to use AtlassianHelper SPM
-* [API Tokens JIRA](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) - Official atlassian tutorial to get API Key
+* [Token JIRA](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) - Official Atlassian tutorial to get API Key
