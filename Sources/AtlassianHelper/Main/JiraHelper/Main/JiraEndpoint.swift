@@ -12,11 +12,11 @@ extension JiraService: TargetType {
     var baseURL: URL {
         switch self {
         case .fetchTasks(let credentials):
-            guard let token = URL(string: credentials.url) else { fatalError() }
+            guard let token = URL(string: credentials.url) else { fatalError("Not valid URL") }
             return token
-       
+            
         case .postTask(let credentials, _, _):
-            guard let token = URL(string: credentials.url) else { fatalError() }
+            guard let token = URL(string: credentials.url) else { fatalError("Not valid URL") }
             return token
         }
     }
@@ -42,7 +42,20 @@ extension JiraService: TargetType {
     var task: Task {
         return .requestPlain
     }
-  
+    
+    var sampleData: Data {
+        switch self {
+        case .fetchTasks(_):
+            return Data()
+        case .postTask(_, let summary, let description):
+            guard let url = Bundle.main.url(forResource: "ticket", withExtension: "json"),
+                  let data = try? Data(contentsOf: url) else {
+                return Data()
+            }
+            return data
+        }
+    }
+    
     var headers: [String : String]? {
         switch self {
         case .fetchTasks(let credentials):
@@ -51,7 +64,7 @@ extension JiraService: TargetType {
                 "Accept" : "*/*",
                 "Authorization": credentials.token
             ]
-       
+            
         case .postTask(let credentials, _, _):
             return [
                 "Content-Type" : "application/json",

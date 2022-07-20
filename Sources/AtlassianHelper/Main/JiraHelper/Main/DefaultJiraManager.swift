@@ -5,11 +5,13 @@ public class DefaultJiraManager {
     var user: String
     var password: String
     var url: String
+    var projectKey: String?
     
-    public init(user: String, password: String, url: String) {
+    public init(user: String, password: String, url: String, projectKey: String?) {
         self.user = user
         self.password = password
         self.url = url
+        self.projectKey = projectKey
     }
 
     var provider = MoyaProvider<JiraService>(plugins: [NetworkLoggerPlugin()])
