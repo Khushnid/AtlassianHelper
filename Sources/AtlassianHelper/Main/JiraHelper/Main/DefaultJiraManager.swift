@@ -1,18 +1,30 @@
 import Foundation
 import Moya
 
-public class DefaultJiraManager: JiraManager {
+public class DefaultJiraManager {
     var user: String
     var password: String
+    var url: String
     
-    public init(user: String, password: String) {
+    public init(user: String, password: String, url: String) {
         self.user = user
         self.password = password
+        self.url = url
+        
+        AtlassianHelper.JiraHelper.shared.jiraUrl = url
     }
+
+    var provider = MoyaProvider<JiraService>(plugins: [NetworkLoggerPlugin()])
     
-    lazy var authProvider = AuthProvider(credentials: AuthProvider.Credentials(user: user, password: password))
-    lazy var provider = MoyaProvider<JiraService>(plugins: [authProvider.basicAuthPlugin])
-    
+    lazy var authToken: String = { [weak self] in
+        guard let self = self else { return "" }
+        let token = "Basic " + "\(self.user):\(self.password)".data(using: .nonLossyASCII)!.base64EncodedString(options: [])
+        JiraHelper.shared.jiraToken = authToken
+        return token
+    }()
+}
+
+extension DefaultJiraManager: JiraManager {
     func fetchTasks(completion: @escaping (Result<JiraGetIssuesResponse, Error>) -> ()) {
         request(target: .fetchTasks, completion: completion)
     }

@@ -8,7 +8,7 @@ enum JiraService {
 
 extension JiraService: TargetType {
     var baseURL: URL {
-        guard let url = URL(string: "https://khushnidjon.atlassian.net/") else {
+        guard let url = URL(string: JiraHelper.shared.jiraUrl) else {
             fatalError("Not valid URL")
         }
        
@@ -37,10 +37,6 @@ extension JiraService: TargetType {
         }
     }
     
-    var sampleData: Data {
-        return Data()
-    }
-    
     var task: Task {
         return .requestPlain
     }
@@ -50,7 +46,8 @@ extension JiraService: TargetType {
         case .fetchTasks, .postTask:
             return [
                 "Content-Type" : "application/json",
-                "Accept" : "*/*"
+                "Accept" : "*/*",
+                "Authorization": JiraHelper.shared.jiraToken
             ]
         }
     }
