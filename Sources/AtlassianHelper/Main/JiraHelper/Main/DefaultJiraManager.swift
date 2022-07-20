@@ -28,7 +28,7 @@ extension DefaultJiraManager: JiraManager {
         request(target: .fetchTasks(credentials: (url: url, token: authToken)), completion: completion)
     }
     
-    func postTask(projectKey: String, summary: String, description: String, onComplete: @escaping (Result<JiraCreateIssueResponse, Error>) -> ()) {
+    public func postTask(projectKey: String, summary: String, description: String, onComplete: @escaping (Result<JiraCreateIssueResponse, Error>) -> ()) {
         request(target: .postTask(projectKey: projectKey, credentials: (url: url, token: authToken), summary: summary, description: description), completion: onComplete)
     }
 }
