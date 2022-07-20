@@ -32,15 +32,14 @@ extension JiraService {
     }
 """
         
-        let data = body.data(using: .utf8)!
-        
         do {
-            if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [Dictionary<String,Any>]  {
-                let data = try? JSONSerialization.data(withJSONObject: jsonArray, options: [])
-                return data
+            if let json = body.data(using: String.Encoding.utf8){
+                if let jsonData = try JSONSerialization.jsonObject(with: json, options: .allowFragments) as? [String:AnyObject] {
+                    return try? JSONSerialization.data(withJSONObject: jsonData, options: [])
+                }
             }
-        } catch let error as NSError {
-            print(error)
+        } catch {
+            print(error.localizedDescription)
         }
         
         return nil
