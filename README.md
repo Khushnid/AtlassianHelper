@@ -1,5 +1,5 @@
 # AtlassianHelper
-It is a swift package that makes easy to work with JIRA(soon Trello)
+This swift package manager makes easy to work with JIRA API(soon Trello)
 
 ## Features
 
@@ -23,11 +23,12 @@ You can contact me at <xushnudbek321@gmail.com> If you find an issue, [open a ti
 ## API Usage
 
 ```
-function test() {
     lazy var networkManager = DefaultJiraManager(user: userValues.user,
                                                  password: userValues.password,
                                                  url: userValues.url,
                                                  projectKey: userValues.key)
+                                                 
+                                                 
     
     func fetchHomePage() {
         networkManager.fetchTasks { [weak self] result in
@@ -40,10 +41,9 @@ function test() {
             }
         }
     }
-}
 ```
 
 
 ## More
 See also:
-* [Integration Jira](https://github.com/Khushnid/IntergrationJira) - Example project, for how to use AtlassianHelper SPM
+* [Integration Jira](https://github.com/Khushnid/IntergrationJira) - Example project for how to use AtlassianHelper SPM
