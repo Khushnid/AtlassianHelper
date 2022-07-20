@@ -46,5 +46,5 @@ You can contact me at <xushnudbek321@gmail.com> If you find an issue, [open a ti
 
 ## More
 See also:
-* [Integration Jira](https://github.com/Khushnid/IntergrationJira) - Example project for how to use AtlassianHelper SPM
-* [Jira Key Tutorial](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) - Official atlassian tutorial to get API Key
+* [Integration JIRA](https://github.com/Khushnid/IntergrationJira) - Example project for how to use AtlassianHelper SPM
+* [API Tokens JIRA](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) - Official atlassian tutorial to get API Key
