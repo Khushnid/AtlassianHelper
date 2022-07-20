@@ -7,7 +7,7 @@ public class DefaultJiraManager {
     var url: String
     var projectKey: String?
     
-    public init(user: String, password: String, url: String, projectKey: String?) {
+    public init(user: String, password: String, url: String, projectKey: String? = nil) {
         self.user = user
         self.password = password
         self.url = url

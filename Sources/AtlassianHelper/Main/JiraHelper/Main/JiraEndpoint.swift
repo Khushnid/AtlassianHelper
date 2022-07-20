@@ -48,11 +48,7 @@ extension JiraService: TargetType {
         case .fetchTasks(_):
             return Data()
         case .postTask(_, let summary, let description):
-            guard let url = Bundle.main.url(forResource: "ticket", withExtension: "json"),
-                  let data = try? Data(contentsOf: url) else {
-                return Data()
-            }
-            return data
+            return addTicketData("PPOKERMAIN", summary, description)
         }
     }
     
