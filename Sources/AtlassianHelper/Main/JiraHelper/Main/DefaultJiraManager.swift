@@ -25,11 +25,11 @@ public class DefaultJiraManager {
 }
 
 extension DefaultJiraManager: JiraManager {
-    func fetchTasks(completion: @escaping (Result<JiraGetIssuesResponse, Error>) -> ()) {
+    public func fetchTasks(completion: @escaping (Result<JiraGetIssuesResponse, Error>) -> ()) {
         request(target: .fetchTasks, completion: completion)
     }
     
-    func postTask(summary: String, description: String, completion: @escaping (Result<JiraCreateIssueResponse, Error>) -> ()) {
+    public func postTask(summary: String, description: String, completion: @escaping (Result<JiraCreateIssueResponse, Error>) -> ()) {
         request(target: .postTask(summary: summary, description: description), completion: completion)
     }
 }

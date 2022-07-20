@@ -1,6 +1,6 @@
 import Foundation
 
-struct JiraGetIssuesResponse: Codable {
+public struct JiraGetIssuesResponse: Codable {
     let maxResults, total: Int
     let issues: [Issue]
     

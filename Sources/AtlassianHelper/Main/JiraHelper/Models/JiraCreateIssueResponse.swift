@@ -1,6 +1,6 @@
 import Foundation
 
-struct JiraCreateIssueResponse: Codable {
+public struct JiraCreateIssueResponse: Codable {
     let id, key: String
     let taskResponse: String
     
