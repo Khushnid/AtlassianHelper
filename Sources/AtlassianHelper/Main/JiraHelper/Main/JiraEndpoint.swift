@@ -12,11 +12,11 @@ extension JiraService: TargetType {
     var baseURL: URL {
         switch self {
         case .fetchTasks(let credentials):
-            guard let token = URL(string: credentials.url) else { fatalError("Not valid URL") }
+            guard let token = URL(string: credentials.url) else { return URL(string: "https://default.atlassian.net")! }
             return token
             
         case .postTask(_, let credentials, _, _):
-            guard let token = URL(string: credentials.url) else { fatalError("Not valid URL") }
+            guard let token = URL(string: credentials.url) else { return URL(string: "https://default.atlassian.net")! }
             return token
         }
     }
