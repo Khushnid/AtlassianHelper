@@ -1,11 +1,11 @@
 import Foundation
 import Moya
 
-typealias Credentials = (url: String, token: String)
+typealias CredentialsJira = (url: String, token: String)
 
 enum JiraService {
-    case fetchTasks(credentials: Credentials)
-    case postTask(projectKey: String, credentials: Credentials, summary: String, description: String)
+    case fetchTasks(credentials: CredentialsJira)
+    case postTask(projectKey: String, credentials: CredentialsJira, summary: String, description: String)
 }
 
 extension JiraService: TargetType {

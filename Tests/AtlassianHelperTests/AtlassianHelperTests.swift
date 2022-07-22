@@ -3,8 +3,7 @@ import XCTest
 
 final class AtlassianHelperTests: XCTestCase {
    
-    
-    func testExampleTrello() throws {
-        XCTAssertEqual(TrelloHelper().text, "Hello, World!")
+    func testExampleTrelloUseCase() throws {
+        XCTAssertEqual(true, true)
     }
 }
