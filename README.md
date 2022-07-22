@@ -1,11 +1,18 @@
 # AtlassianHelper
-This swift package manager makes easy to work with JIRA API(soon Trello)
+This swift package manager makes easy to work with JIRA and Trello API
 
-## Features
+## Features Jira
 
 * Authorizing using basic auth type
 * Getting the list of tasks from Jira Board
 * Adding new Jira Task(Add Project Key)
+
+## Features Trello
+
+* Fetch boards using Key and Token
+* Fetch lists using boardID(obtained from board request)
+* Fetch cards using listID(obtained from list request)
+
 
 ## Requirements
 
@@ -22,29 +29,26 @@ You can contact me at <xushnudbek321@gmail.com> If you find an issue, [open a ti
 
 ## API Usage
 
+- For Jira Usage - [Package Usage](https://github.com/Khushnid/IntergrationJira)
+
 ```
     lazy var networkManager = DefaultJiraManager(user: userValues.user,
                                                  password: userValues.password,
                                                  url: userValues.url,
                                                  projectKey: userValues.key)
-                                                 
-                                                 
-    
-    func fetchHomePage() {
-        networkManager.fetchTasks { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let response):
-                self.tasks = response.issues
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
+```
+
+- For Trello Usage - [Package Usage](https://github.com/Khushnid/IntergrationJira)
+
+```
+    lazy var networkManager = DefaultTrelloManager(key: userValues.key,
+                                                   token: userValues.token)
 ```
 
 
 ## More
 See also:
-* [Integration JIRA](https://github.com/Khushnid/IntergrationJira) - Example project for how to use AtlassianHelper SPM
-* [Token JIRA](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) - Official Atlassian tutorial to get API Key
+* [Package Usage](https://github.com/Khushnid/IntergrationJira) - Example project for how to use AtlassianHelper SPM
+* [Jira Token Tutorial](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) - Official Atlassian tutorial to get JIRA API Key
+* [Trello Token Tutorial](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/) - Official Atlassian tutorial to get Trello API Key
+
