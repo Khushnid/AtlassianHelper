@@ -14,15 +14,15 @@ public class DefaultTrelloManager {
 }
 
 extension DefaultTrelloManager: TrelloManager {
-    func fetchBoards(onComplete: @escaping (Result<TrelloResponse, Error>) -> ()) {
+    public func fetchBoards(onComplete: @escaping (Result<TrelloResponse, Error>) -> ()) {
         request(target: .fetchBoards(credentials: (key: key, token: token)), completion: onComplete)
     }
     
-    func fetchLists(boardID: String, onComplete: @escaping (Result<TrelloResponse, Error>) -> ()) {
+    public func fetchLists(boardID: String, onComplete: @escaping (Result<TrelloResponse, Error>) -> ()) {
         request(target: .fetchLists(boardID: boardID, credentials: (key: key, token: token)), completion: onComplete)
     }
     
-    func fetchCards(listID: String, onComplete: @escaping (Result<TrelloResponse, Error>) -> ()) {
+    public func fetchCards(listID: String, onComplete: @escaping (Result<TrelloResponse, Error>) -> ()) {
         request(target: .fetchCards(listID: listID, credentials: (key: key, token: token)), completion: onComplete)
     }
 }
