@@ -27,9 +27,9 @@ Installation is only available through `Swift Package Manager`
 ## Contact
 You can contact me at <xushnudbek321@gmail.com> If you find an issue, [open a ticket](https://github.com/Khushnid/AtlassianHelper/issues/new). Pull requests are warmly welcome as well!
 
-## API Usage
+## API Usage - [Usage](https://github.com/Khushnid/IntergrationJira)
 
-- For Jira Usage - [Package Usage](https://github.com/Khushnid/IntergrationJira)
+- For Jira Usage
 
 ```
     lazy var networkManager = DefaultJiraManager(user: userValues.user,
@@ -39,7 +39,7 @@ You can contact me at <xushnudbek321@gmail.com> If you find an issue, [open a ti
 ```
 
 
-- For Trello Usage - [Package Usage](https://github.com/Khushnid/IntergrationJira)
+- For Trello Usage
 
 ```
     lazy var networkManager = DefaultTrelloManager(key: userValues.key,
