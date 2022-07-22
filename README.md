@@ -1,17 +1,17 @@
 # AtlassianHelper
-This swift package manager makes easy to work with JIRA and Trello API
+This swift package manager makes easy to work with JIRA and Trello APIs
 
 ## Features Jira
 
 * Authorizing using basic auth type
 * Getting the list of tasks from Jira Board
-* Adding new Jira Task(Add Project Key)
+* Adding new Jira Task (Use Project Key)
 
 ## Features Trello
 
 * Fetch boards using Key and Token
-* Fetch lists using boardID(obtained from board request)
-* Fetch cards using listID(obtained from list request)
+* Fetch lists using boardID (obtained from board request)
+* Fetch cards using listID (obtained from list request)
 
 
 ## Requirements
@@ -25,7 +25,7 @@ Installation is only available through `Swift Package Manager`
 - Select from main branch
 
 ## Contact
-You can contact me at <xushnudbek321@gmail.com> If you find an issue, [open a ticket](https://github.com/Khushnid/AtlassianHelper/issues/new). Pull requests are warmly welcome as well 
+You can contact me at <xushnudbek321@gmail.com> If you find an issue, [open a ticket](https://github.com/Khushnid/AtlassianHelper/issues/new). Pull requests are warmly welcome as well!
 
 ## API Usage
 
@@ -38,6 +38,7 @@ You can contact me at <xushnudbek321@gmail.com> If you find an issue, [open a ti
                                                  projectKey: userValues.key)
 ```
 
+
 - For Trello Usage - [Package Usage](https://github.com/Khushnid/IntergrationJira)
 
 ```
@@ -49,6 +50,6 @@ You can contact me at <xushnudbek321@gmail.com> If you find an issue, [open a ti
 ## More
 See also:
 * [Package Usage](https://github.com/Khushnid/IntergrationJira) - Example project for how to use AtlassianHelper SPM
-* [Jira Token Tutorial](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) - Official Atlassian tutorial to get JIRA API Key
-* [Trello Token Tutorial](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/) - Official Atlassian tutorial to get Trello API Key
+* [Jira Token](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) - Official Atlassian tutorial to get JIRA API Key
+* [Trello Token](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/) - Official Atlassian tutorial to get Trello API Key
 
